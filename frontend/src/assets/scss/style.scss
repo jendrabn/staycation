@@ -1,0 +1,488 @@
+/*!
+ * Bootstrap v5.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+// scss-docs-start import-stack
+// Configuration
+@import "functions";
+@import "color-variables";
+@import "variables";
+@import "mixins";
+@import "utilities";
+
+// Layout & components
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "containers";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "accordion";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "alert";
+@import "progress";
+@import "list-group";
+@import "close";
+@import "toasts";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "spinners";
+@import "offcanvas";
+@import "placeholders";
+
+// Helpers
+@import "helpers";
+
+// Utilities
+@import "utilities/api";
+// scss-docs-end import-stack
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(185px, auto);
+  grid-auto-flow: dense;
+  row-gap: 30px;
+  column-gap: 30px;
+  position: relative;
+  z-index: 3;
+
+  &.sm {
+    grid-auto-rows: minmax(245px, auto);
+    row-gap: 10px;
+    column-gap: 10px;
+  }
+
+  .item {
+    &.column-1 {
+      grid-column-end: span 1;
+    }
+
+    &.column-2 {
+      grid-column-end: span 2;
+    }
+
+    &.column-3 {
+      grid-column-end: span 3;
+    }
+
+    &.column-4 {
+      grid-column-end: span 4;
+    }
+
+    &.column-5 {
+      grid-column-end: span 5;
+    }
+
+    &.column-6 {
+      grid-column-end: span 6;
+    }
+
+    &.column-7 {
+      grid-column-end: span 7;
+    }
+
+    &.column-8 {
+      grid-column-end: span 8;
+    }
+
+    &.column-9 {
+      grid-column-end: span 9;
+    }
+
+    &.column-10 {
+      grid-column-end: span 10;
+    }
+
+    &.column-11 {
+      grid-column-end: span 11;
+    }
+
+    &.column-12 {
+      grid-column-end: span 12;
+    }
+
+    &.row-1 {
+      grid-row-end: span 1;
+    }
+
+    &.row-2 {
+      grid-row-end: span 2;
+    }
+
+    &.row-3 {
+      grid-row-end: span 3;
+    }
+
+    &.row-4 {
+      grid-row-end: span 4;
+    }
+  }
+}
+
+header {
+  border-bottom: 1px solid $gray-200;
+  width: 100%;
+  position: relative;
+  margin-bottom: 50px;
+
+  .navbar {
+    min-height: 80px;
+
+    .navbar-nav {
+      li.nav-item {
+        a {
+          &.nav-link {
+            letter-spacing: 1px;
+            color: $gray-900;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            &.active {
+              color: $primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+section {
+  margin-bottom: 70px;
+}
+
+.btn {
+  // min-height: 50px;
+  // display: inline-flex;
+  // justify-content: center;
+  // align-items: center;
+  // // line-height: 50px;
+  &.btn-primary {
+    &.btn-shadow {
+      box-shadow: 0px 8px 15px rgba(50, 82, 223, 0.3);
+    }
+  }
+}
+
+@each $color, $value in $grays {
+  .text-gray-#{$color} {
+    color: $value;
+  }
+  .bg-gray-#{$color} {
+    background-color: $value;
+  }
+}
+
+@each $color, $value in $colors {
+  .text-#{$color} {
+    color: $value;
+  }
+  .bg-#{$color} {
+    background-color: $value;
+  }
+}
+
+.brand-icon-text {
+  font-size: 26px;
+  font-weight: 500;
+  color: $indigo;
+  text-decoration: none;
+  span {
+    color: $gray-900;
+  }
+}
+
+.img-cover {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.img-contain {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  border: none;
+  &.bordered {
+    border: 1px solid $gray-200;
+  }
+
+  border-radius: 15px;
+
+  .tag {
+    z-index: 3;
+    font-size: 0.875rem;
+    background-color: $pink;
+    padding: 0.25rem 1.25rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $white;
+    min-height: 30px;
+    border-radius: 0 15px;
+    font-weight: 400;
+
+    span {
+      font-weight: 300;
+    }
+  }
+
+  .img-wrapper {
+    height: 100%;
+    margin-bottom: 0;
+    border-radius: 0.9375rem;
+    overflow: hidden;
+  }
+
+  .meta-wrapper {
+    margin-top: 1rem;
+
+    h5 {
+      font-size: 1.125rem;
+      margin-bottom: 2px;
+    }
+
+    span {
+      font-size: 0.875rem;
+    }
+  }
+
+  &.card-featured {
+    overflow: hidden;
+    cursor: pointer;
+    height: 100%;
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: scale(1.1);
+      transition: 0.5s transform ease-in-out;
+      z-index: 2;
+      @include gradient-y(rgba($black, 0), rgba($black, 0.51), 0%, 100%);
+    }
+
+    .img-wrapper {
+      z-index: 1;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: scale(1.1);
+      transition: 0.25s transform ease-in-out;
+      border-radius: $border-radius;
+    }
+
+    .meta-wrapper {
+      z-index: 4;
+      color: $white;
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      transform: translateY(0);
+      transition: 0.3s transform ease-in-out;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+    }
+
+    &:hover {
+      .meta-wrapper {
+        transform: translateY(-10px);
+      }
+
+      &:after {
+        transform: scale(1);
+      }
+
+      .img-wrapper {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.testimonial-hero,
+.testimonial-hero img {
+  width: 365px;
+  height: 500px;
+}
+
+footer {
+  border-top: 1px solid $gray-200;
+  padding-top: 50px;
+
+  .brand-tagline {
+    color: $gray-500;
+    font-weight: 300;
+    margin-top: 8px;
+  }
+
+  .list-group-item {
+    padding: 0.3125rem 0;
+    border: 0;
+
+    a,
+    span {
+      color: $gray-500;
+    }
+
+    a {
+      &:hover,
+      &:focus {
+        color: $gray-800;
+      }
+    }
+  }
+
+  .copyrights {
+    margin: 50px 0;
+    font-weight: 300;
+    color: $gray-500;
+  }
+}
+
+main {
+  p {
+    color: $gray-500;
+    font-weight: 300;
+  }
+}
+
+// `lg` applies to medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  header {
+    .navbar {
+      min-height: inherit;
+    }
+  }
+}
+
+// `md` applies to small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+  .btn-show-me-now {
+    width: 100%;
+  }
+
+  .container-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(185px, auto);
+    grid-auto-flow: dense;
+    row-gap: 30px;
+    column-gap: 30px;
+    position: relative;
+    z-index: 3;
+
+    &.sm {
+      grid-auto-rows: minmax(245px, auto);
+      row-gap: 10px;
+      column-gap: 10px;
+    }
+
+    .item {
+      &.column-1 {
+        grid-column-end: span 12;
+      }
+
+      &.column-2 {
+        grid-column-end: span 12;
+      }
+
+      &.column-3 {
+        grid-column-end: span 12;
+      }
+
+      &.column-4 {
+        grid-column-end: span 12;
+      }
+
+      &.column-5 {
+        grid-column-end: span 12;
+      }
+
+      &.column-6 {
+        grid-column-end: span 12;
+      }
+
+      &.column-7 {
+        grid-column-end: span 12;
+      }
+
+      &.column-8 {
+        grid-column-end: span 12;
+      }
+
+      &.column-9 {
+        grid-column-end: span 12;
+      }
+
+      &.column-10 {
+        grid-column-end: span 12;
+      }
+
+      &.column-11 {
+        grid-column-end: span 12;
+      }
+
+      &.column-12 {
+        grid-column-end: span 12;
+      }
+
+      &.row-1 {
+        grid-row-end: span 1;
+      }
+
+      &.row-2 {
+        grid-row-end: span 2;
+      }
+
+      &.row-3 {
+        grid-row-end: span 3;
+      }
+
+      &.row-4 {
+        grid-row-end: span 4;
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<!-- DataTales Example -->
+<div
+  class="tab-pane fade"
+  id="show-activity"
+  role="tabpanel"
+  aria-labelledby="show-activity-tab"
+>
+  <div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <form
+            action="/admin/item/add/activity"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="itemId" value="<%= itemId %>" />
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="type">Type</label>
+              <input type="text" name="type" id="type" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input
+                type="file"
+                name="image"
+                id="image"
+                class="form-control"
+                accept=".jpg, .jpeg, .png"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+        <div class="col-md-7">
+          <div class="table-responsive">
+            <table
+              class="table table-bordered"
+              id="dataTableActivity"
+              width="100%"
+              cellspacing="0"
+            >
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Image</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for( let i = 0; i < activity.length; i++ ) { %>
+                <tr>
+                  <th><%= 1 + i %></th>
+                  <th><%= activity[i].name %></th>
+                  <th><%= activity[i].type %></th>
+                  <th>
+                    <img
+                      width="100"
+                      class="img-fluid img-thumbnail"
+                      src="https://admstaycation.herokuapp.com/<%= activity[i].imageUrl %>"
+                      alt="<%= activity[i].name %> "
+                    />
+                  </th>
+                  <th>
+                    <button
+                      data-id="<%= activity[i].id %>"
+                      data-name="<%= activity[i].name %>"
+                      data-type="<%= activity[i].type %>"
+                      class="btn btn-sm btn-circle btn-warning btn__edit"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      data-itemid="<%= itemId %>"
+                      data-id="<%= activity[i].id %>"
+                      class="btn btn-sm btn-circle btn-danger btn__delete"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </th>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

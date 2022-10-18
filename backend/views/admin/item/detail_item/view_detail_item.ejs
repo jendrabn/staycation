@@ -1,0 +1,117 @@
+<%- include('../../../partials/header.ejs') %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+  <%- include('../../../partials/sidebar.ejs') %>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <%- include('../../../partials/navbar.ejs') %>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <%- include('../../../partials/message.ejs') %>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Detail Item</h1>
+        <!-- End Page Heading -->
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              id="show-feature-tab"
+              data-toggle="tab"
+              href="#show-feature"
+              role="tab"
+              aria-controls="show-feature"
+              aria-selected="true"
+              >Show Feature</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="show-activity-tab"
+              data-toggle="tab"
+              href="#show-activity"
+              role="tab"
+              aria-controls="show-activity"
+              aria-selected="false"
+              >Show Activity</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <%- include('show_feature.ejs') %> <%- include('show_activity.ejs') %>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <%- include('../../../partials/footer.ejs') %>
+    <!-- End of Footer -->
+  </div>
+  <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<form method="POST" id="form__delete" hidden></form>
+
+<%- include('edit_modal_feature') %> <%- include('edit_modal_activity') %> <%-
+include('../../../partials/js.ejs') %>
+
+<script>
+  $(function () {
+    const tableFeature = $("#dataTableFeature");
+    const tableActivity = $("#dataTableActivity");
+    const formDelete = $("#form__delete");
+
+    tableFeature.DataTable();
+    tableActivity.DataTable();
+
+    tableFeature.on("click", ".btn__edit", function () {
+      const modal = $("#modal__edit__feature");
+      modal.find("form input[name=id]").val($(this).data("id"));
+      modal.find("form input[name=name]").val($(this).data("name"));
+      modal.find("form input[name=qty]").val($(this).data("qty"));
+      modal.modal("show");
+    });
+
+    tableActivity.on("click", ".btn__edit", function () {
+      const modal = $("#modal__edit__activity");
+      modal.find("form input[name=id]").val($(this).data("id"));
+      modal.find("form input[name=name]").val($(this).data("name"));
+      modal.find("form input[name=type]").val($(this).data("type"));
+      modal.modal("show");
+    });
+
+    tableFeature.on("click", ".btn__delete", function () {
+      const action = `/admin/item/delete/feature/${$(this).data("id")}/${$(
+        this
+      ).data("itemid")}?_method=DELETE`;
+      formDelete.prop("action", action);
+      formDelete.submit();
+    });
+
+    tableActivity.on("click", ".btn__delete", function () {
+      const action = `/admin/item/delete/activity/${$(this).data("id")}/${$(
+        this
+      ).data("itemid")}?_method=DELETE`;
+      formDelete.prop("action", action);
+      formDelete.submit();
+    });
+  });
+</script>

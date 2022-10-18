@@ -1,0 +1,37 @@
+<%- include('logout_modal.ejs') %> 
+
+<!-- Bootstrap core JavaScript-->
+<script src="/sbadmin2/vendor/jquery/jquery.min.js"></script>
+<script src="/sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/sbadmin2/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/sbadmin2/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/sbadmin2/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/sbadmin2/js/demo/datatables-demo.js"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+
+<script>
+  if (document.querySelector('.editor')) {
+    ClassicEditor
+    .create(document.querySelector('.editor'))
+    .then(editor => {
+      // console.log(editor);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
+ 
+</script>
+</body>
+
+</html>

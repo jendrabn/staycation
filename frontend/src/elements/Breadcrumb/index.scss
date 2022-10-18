@@ -1,0 +1,19 @@
+@import "../../assets/scss/color-variables";
+
+.breadcrumb {
+  .breadcrumb-item {
+    + .breadcrumb-item {
+      &::before {
+        color: $gray-400;
+      }
+    }
+
+    a {
+      color: $gray-400;
+    }
+
+    &.active {
+      color: $gray-900;
+    }
+  }
+}
